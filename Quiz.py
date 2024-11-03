@@ -1,5 +1,6 @@
 # Example file for LinkedIn Learning Course "Python: Build a Quiz App" by Joe Marini
 # The Quiz and Question classes define a particular quiz
+import datetime
 
 
 class Quiz:
@@ -20,9 +21,12 @@ class Quiz:
         print(f'TOTAL POINTS: {self.total_points}')
         print("*******************************************\n")
 
-    def print_results(self):
+    def print_results(self, quiz_taker):
         print("*******************************************")
-        print(f'Your total score is {self.total_points}!!!')
+        print(f'DATE: {datetime.datetime.today()}')
+        print(f'{quiz_taker} total score is {self.score}!!!')
+        print(f'QUESTIONS: {self.correct_count} out of {len(self.questions)} are correct')
+        print(f'SCORE: {self.score} out of {self.total_points}')
         print("*******************************************\n")
 
     def take_quiz(self):

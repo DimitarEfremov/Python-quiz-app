@@ -1,16 +1,19 @@
 # Example file for LinkedIn Learning Course "Python: Build a Quiz App" by Joe Marini
 # pyquiz.py -- Main starting point of the program
+from quizmanager import QuizManager
 
 
 class QuizApp:
+    QUIZ_FOLDER = 'Quizzes'
     def __init__(self):
         self.username = ""
+        self.quiz_manager = QuizManager(QuizApp.QUIZ_FOLDER)
 
     def startup(self):
         # print the greeting at startup
         self.greeting()
 
-        # TODO: ask the user for their name
+        # ask the user for their name
         self.username = input("Please select your username: ")
         print(f'Welcome, {self.username}!')
         print()
@@ -40,7 +43,7 @@ class QuizApp:
     def menu(self):
         self.menu_header()
 
-        # TODO: get the user's selection and act on it. This loop will
+        # get the user's selection and act on it. This loop will
         # run until the user exits the app
         selection = ""
         while True:
@@ -56,13 +59,15 @@ class QuizApp:
                 self.menu_header()
             elif selection[0] == 'L':
                 print('\nAvailable quizzes are')
-                #     TODO list all quizzes
+                self.quiz_manager.list_quizzes()
                 print('---------------------\n')
             elif selection[0] == 'T':
                 try:
                     quiz_number = int(input('Quiz number:'))
                     print(f'You have selected quiz number {quiz_number}')
                 #     TODO start the quiz
+                    self.quiz_manager.take_quiz(quiz_number,self.username)
+                    self.quiz_manager.print_results()
                 except:
                     self.menu_error()
             else:
