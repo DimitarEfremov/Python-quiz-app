@@ -47,7 +47,7 @@ class QuizManager:
     def take_quiz(self, quizid, username):
         self.quiz_taker = username
         self.the_quiz = self.quezzes[quizid]
-        self.results = self.the_quiz.take_quiz()
+        self.results = self.the_quiz.take_quiz
 
     # prints the results of the most recently taken quiz
     def print_results(self):
